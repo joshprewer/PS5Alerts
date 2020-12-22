@@ -1,7 +1,6 @@
 import * as dotenv from 'dotenv';
-import { checkProduct } from './check-product'
+import { isAvailable } from './check-product'
 
-// 5 minutes
 const TIMEOUT = 5 * 60 * 1000;
 
 function sleep(timer: number): Promise<void> {
@@ -11,12 +10,20 @@ function sleep(timer: number): Promise<void> {
 async function main() {
   dotenv.config();
 
-  while (true) {
+  var keepChecking = true;
 
-    await checkProduct();
+  while (keepChecking) {
+    try {
+      const available = await isAvailable();
+      keepChecking = !available;
 
-    console.log('------------- SLEEPING -------------');
-    await sleep(TIMEOUT);
+      console.log('------------- SLEEPING -------------');
+      await sleep(TIMEOUT);
+
+    } catch (error) {
+      console.log(error);
+      break
+    }
   }
 }
 
