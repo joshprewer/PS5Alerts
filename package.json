@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@vonage/server-sdk": "^2.10.4",
     "dotenv": "^8.2.0",
     "jsdom": "^16.4.0",
     "nexmo": "^2.9.1",
