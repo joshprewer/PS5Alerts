@@ -1,5 +1,6 @@
-import * as dotenv from 'dotenv';
-import { isAvailable } from './check-product'
+import * as dotenv from "dotenv";
+import { isAvailable } from "./check-product";
+import { sendSms } from "./send-sms";
 
 const TIMEOUT = 5 * 60 * 1000;
 
@@ -10,22 +11,24 @@ function sleep(timer: number): Promise<void> {
 async function main() {
   dotenv.config();
 
-  var keepChecking = true;
-
-  while (keepChecking) {
+  while (true) {
     try {
       const available = await isAvailable();
-      keepChecking = !available;
 
-      console.log('------------- SLEEPING -------------');
+      if (available) {
+        console.log("PS5 might be available");
+        sendSms();
+        break;
+      }
+
+      console.log("PS5 is unavailable");
+      console.log("------------- SLEEPING -------------");
       await sleep(TIMEOUT);
-
     } catch (error) {
       console.log(error);
-      break
+      break;
     }
   }
 }
 
 main();
-

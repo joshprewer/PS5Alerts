@@ -1,6 +1,5 @@
 import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
-import { sendSms } from "./send-sms";
 
 const FETCH_TIMEOUT = 20 * 1000;
 
@@ -28,12 +27,8 @@ export async function isAvailable(): Promise<boolean> {
   const isAvailable = document.querySelector("h1").textContent !== phrase;
 
   if (isAvailable) {
-    console.log("PS5 might be available");
-    sendSms();
-
     return true;
   }
 
-  console.log("PS5 is unavailable");
   return false;
 }
