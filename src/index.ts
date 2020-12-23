@@ -25,7 +25,7 @@ async function main() {
 
       if (availableResponse) {
         console.log(`PS5 might be available at ${availableResponse.name}`);
-        // sendSms();
+        sendSms();
         break;
       }
 
