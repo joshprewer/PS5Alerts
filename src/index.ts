@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv";
-import { isAvailable } from "./check-product";
+import { argosHandler } from "./argos";
+import { gameHandler } from "./game";
 import { sendSms } from "./send-sms";
 
 const TIMEOUT = 5 * 60 * 1000;
@@ -13,11 +14,18 @@ async function main() {
 
   while (true) {
     try {
-      const available = await isAvailable();
+      const checkProductResponses = await Promise.all([
+        argosHandler(),
+        gameHandler(),
+      ]);
 
-      if (available) {
-        console.log("PS5 might be available");
-        sendSms();
+      const availableResponse = checkProductResponses.find(
+        (response) => response.isAvailable
+      );
+
+      if (availableResponse) {
+        console.log(`PS5 might be available at ${availableResponse.name}`);
+        // sendSms();
         break;
       }
 
