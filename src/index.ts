@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv'
 import { argosHandler } from './argos'
 import { gameHandler } from './game'
 import { veryHandler } from './very'
+import { amazonHandler } from './amazon'
 import { sendSms } from './send-sms'
 
 const TIMEOUT = 5 * 60 * 1000
@@ -19,7 +20,8 @@ async function main () {
       const checkProductResponses = await Promise.all([
         argosHandler(),
         gameHandler(),
-        veryHandler()
+        // veryHandler(),
+        amazonHandler()
       ])
 
       const availableResponse = checkProductResponses.find(
