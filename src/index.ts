@@ -27,8 +27,9 @@ async function main () {
       )
 
       if (availableResponse) {
-        console.log(`PS5 might be available at ${availableResponse.name}`)
-        sendSms()
+        const message = `PS5 might be available at ${availableResponse.name}`
+        console.log(message)
+        sendSms(message)
         break
       }
 
@@ -36,6 +37,7 @@ async function main () {
       console.log('------------- SLEEPING -------------')
       await sleep(TIMEOUT)
     } catch (error) {
+      sendSms('Something went wrong. Please restart me!')
       console.log(error)
       break
     }

@@ -1,16 +1,15 @@
 import Nexmo from 'nexmo'
 
-export function sendSms () {
+export function sendSms (message: string) {
   const nexmo = new Nexmo({
     apiKey: process.env.VONAGE_API_KEY,
     apiSecret: process.env.VONAGE_API_SECRET
   })
 
-  const from = 'ShoppingBot'
+  const from = 'PS5Alerts'
   const to = process.env.PHONE_NUMBER
-  const text = 'PS5 potentially available at Argos'
 
-  nexmo.message.sendSms(from, to, text, {}, (err, responseData) => {
+  nexmo.message.sendSms(from, to, message, {}, (err, responseData) => {
     if (err) {
       console.log(err)
     } else {
