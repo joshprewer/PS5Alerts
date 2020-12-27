@@ -12,6 +12,7 @@ function sleep (timer: number): Promise<void> {
 
 async function main () {
   dotenv.config()
+  console.log('Alerts started')
 
   while (true) {
     try {
