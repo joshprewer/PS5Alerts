@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 import { JSDOM } from 'jsdom'
-import { CheckProductResponse } from './check-product'
+import { CheckProductResponse } from '../check-product'
 
 const name = 'Amazon'
 

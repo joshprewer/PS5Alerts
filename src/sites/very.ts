@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import { CheckProductResponse } from './check-product'
+import { CheckProductResponse } from '../check-product'
 
 const name = 'Very'
 
