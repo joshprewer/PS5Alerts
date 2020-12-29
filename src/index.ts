@@ -5,7 +5,7 @@ import { veryHandler } from './sites/very'
 import { amazonHandler } from './sites/amazon'
 import { sendSms } from './send-sms'
 
-const TIMEOUT = 2 * 60 * 1000
+const TIMEOUT = 45 * 1000
 
 function sleep (timer: number): Promise<void> {
   return new Promise<void>((resolve) => setTimeout(() => resolve(), timer))
