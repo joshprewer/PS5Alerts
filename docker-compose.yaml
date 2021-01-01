@@ -4,4 +4,9 @@ services:
     build: .
     command: sh -c "npm start"
     environment:
+      BUILD_ENVIRONMENT: 'prod'
+  test:
+    build: .
+    command: sh -c "npm start"
+    environment:
       BUILD_ENVIRONMENT: 'dev'

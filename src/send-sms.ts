@@ -18,17 +18,19 @@ export async function sendSms (message: string) {
     PhoneNumber: process.env.PHONE_NUMBER
   }
 
-  const setSMSType = new aws.SNS({ apiVersion: '2010-03-31' })
-    .setSMSAttributes(smsParams)
-    .promise()
-  const publishText = new aws.SNS({ apiVersion: '2010-03-31' })
-    .publish(msgParams)
-    .promise()
+  if (process.env.BUILD_ENVIRONMENT === 'prod') {
+    const setSMSType = new aws.SNS({ apiVersion: '2010-03-31' })
+      .setSMSAttributes(smsParams)
+      .promise()
+    const publishText = new aws.SNS({ apiVersion: '2010-03-31' })
+      .publish(msgParams)
+      .promise()
 
-  try {
-    // await setSMSType
-    // await publishText
-  } catch (error) {
-    console.log(error)
+    try {
+      await setSMSType
+      await publishText
+    } catch (error) {
+      console.log(error)
+    }
   }
 }

@@ -28,11 +28,7 @@ export async function smythHandler (): Promise<CheckProductResponse> {
   const document = dom.window.document
 
   const outOfStockElement = document.querySelector('#customAddToCartForm > div.instoreMessage > span:nth-child(14) > table > tbody > tr > td:nth-child(2)')
-  console.log(outOfStockElement)
-
   const isAvailable = outOfStockElement === null || outOfStockElement.textContent !== outOfStockPhrase
-
-  console.log(isAvailable)
 
   return {
     name,
