@@ -5,7 +5,7 @@ const name = 'Game'
 
 export async function gameHandler (): Promise<CheckProductResponse> {
   const response = await fetch(
-    'https://www.game.co.uk/en/playstation-5-additional-dualsense-wireless-controller-2835866',
+    'https://www.game.co.uk/en/m/playstation-5-console-2826338',
     {
       headers: {
         'User-Agent':
