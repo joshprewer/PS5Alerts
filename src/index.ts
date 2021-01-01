@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv'
 import { argosHandler } from './sites/argos'
 import { gameHandler } from './sites/game'
 import { veryHandler } from './sites/very'
+import { smythHandler } from './sites/smyths'
 import { amazonHandler } from './sites/amazon'
 import { sendSms } from './send-sms'
 
@@ -21,7 +22,8 @@ async function main () {
         argosHandler(),
         gameHandler(),
         veryHandler(),
-        amazonHandler()
+        amazonHandler(),
+        smythHandler()
       ])
 
       const unavailableSites = responses
