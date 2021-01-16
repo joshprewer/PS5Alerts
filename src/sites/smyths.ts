@@ -22,13 +22,13 @@ export async function smythHandler (): Promise<CheckProductResponse> {
     }
   )
 
-  const outOfStockPhrase = 'Out of Stock. Expected in stock: January 2021'
+  const outOfStockPhrase = 'Out of Stock'
   const text = await homepageResponse.text()
   const dom = new JSDOM(text)
   const document = dom.window.document
 
   const outOfStockElement = document.querySelector('#customAddToCartForm > div.instoreMessage > span:nth-child(14) > table > tbody > tr > td:nth-child(2)')
-  const isAvailable = outOfStockElement === null || outOfStockElement.textContent !== outOfStockPhrase
+  const isAvailable = outOfStockElement === null || !outOfStockElement.textContent.includes(outOfStockPhrase)
 
   return {
     name,
