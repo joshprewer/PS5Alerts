@@ -46,9 +46,8 @@ async function main () {
       console.log('------------- SLEEPING -------------')
       await sleep(TIMEOUT)
     } catch (error) {
-      sendSms('Something went wrong. Please restart me!')
+      console.log('Error with site response')
       console.log(error)
-      break
     }
   }
 }
